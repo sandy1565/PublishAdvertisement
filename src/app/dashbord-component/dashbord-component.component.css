@@ -1,0 +1,40 @@
+
+
+ul{
+    list-style: none;
+    font-size: 30px;
+    
+}
+
+ul>li>a{
+    text-align: center;
+    color: pink;
+    
+}
+
+
+#container[_ngcontent-c0] {
+    margin-bottom: -38px;
+}
+
+body{
+    background-color:#000d1a;
+    padding-bottom: 10px;
+}
+
+
+h1 {
+    margin-top: -10px;
+    color: cornflowerblue;
+    
+}
+
+p{
+    color: dimgray
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    text-decoration: none;
+    background-color: darkslategrey;
+}
+

@@ -1,0 +1,29 @@
+<div class= "container">
+    <h1> LOGIN</h1> 
+    <form #Form="ngForm" (ngSubmit)="onSubmit(Form)" >
+          
+            
+        <hr />
+         <!-- username -->
+    <div class="form-group">
+        <label for="username">username</label> 
+        <input type="text" class="form-control" 
+        required name="username" [(ngModel)]="_form.username" 
+        #username="ngModel">
+        </div>
+
+
+            <!-- password-->
+    <div class="form-group">
+        <label for="password">password</label>
+        <input type="text" class="form-control" 
+        required name="password" [(ngModel)]="_form.password" 
+        #password="ngModel">
+        </div>
+        <!-- <a *ngIf=isValid routerLink ="./form" click=dologin()></a> -->
+      <button type="submit" class="btn btn-primary" [disabled]="!Form.valid">Submit</button>
+      </form>
+    </div>
+ <div>
+    <router-outlet></router-outlet>
+</div>

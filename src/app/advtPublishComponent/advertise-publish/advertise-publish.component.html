@@ -1,0 +1,96 @@
+<form #heroForm="ngForm" class="form">
+
+
+  <div class="jumbotron">
+    <h2> Publish Your Advertisement</h2>
+
+
+    <div class="form-group">
+      <label for="gender">Send Messages To Male, Female or Both</label>
+      <div class="form-check">
+        <input type="radio" value="male" name="gender" [(ngModel)]="gender" required #gender_type> Male
+        <input type="radio" value="female" name="gender1" [(ngModel)]="gender" required> Female
+        <!-- <button [disabled]="genderControl.errors">Next</button> -->
+      </div>
+
+
+      <div class="form-group">
+        <label class="label-control">Location:</label>
+
+        <!-- <select id="location_id" #location_id="ngModel" class="hideLabel form-control" [(ngModel)]="locationId"
+                  name="location_id" (change)="selectLocationName();">
+                  <option selected="" value=""></option>
+                  <option [ngValue]="location.location_id" *ngFor="let location of locations">
+                    {{location.locationName}}
+                  </option>
+                </select> -->
+        <!-- <select id="location_id" #location_id="ngModel" class="hideLabel form-control" multiple="multiple" [(ngModel)]="locationId">
+                  <option value="please select any value" selected>Select any value</option>
+                  <option [value]="location.location_id" *ngFor="let location of locations">
+                    {{location.locationName}}
+                  </option>
+                </select> -->
+
+        <div class="autocomplete">
+          <div class="chips-input-container">
+            <div class="user-chip" *ngFor="let location of userSelects">
+              {{location.locationName}}
+              <span (click)="deleteSelects(location)" class="delete-icon-chip">&#10006;</span>
+            </div>
+            <input name="suggestion" type="text" placeholder="Location" (click)="suggest()" [(ngModel)]="userSelectsString">
+          </div>
+
+          <div class="autocomplete-items" *ngIf="show">
+            <div *ngFor="let s of locations" [ngClass]="isSelected(s) ? 'selected-suggestion' : ''" (click)="selectSuggestion(s)">{{ s.locationName }}</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="label-control">Block:</label>
+
+        <select id="block_id" #block_id="ngModel" class="hideLabel form-control" [(ngModel)]="blockId" name="block_id" (change)="selectBlockName();">
+          <option selected="" value=""></option>
+          <option [ngValue]="block.block_id" *ngFor="let block of blocks">
+            {{block.blockName}}
+          </option>
+        </select>
+      </div>
+
+
+      <!-- messages to senior citizens -->
+
+      <div class="form-group">
+        <label class="label-control">Send Messages To Senior Citizens Or All.</label>
+        <br>
+        <input type="radio" name="messages_to_send" [(ngModel)]="message_to_send" class="form-control" id="messages_to_ss" #messages_to_send>Senior Citizen
+          <input type="radio" name="messages_to_all" class="form-control" [(ngModel)]="message_to_send" id="messages_to_all" #messages_to_send>All
+        <!-- <input type="radio" value="messages_to_send" name="messages" [(ngModel)]="messages" required #messages_to_send> Senior Citizen -->
+        <!-- <input type="radio" value="messages_to_send" name="messages_to_send" [(ngModel)]="messages_to_sen" required #messages_to_sen="ngModel"> All -->
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-2 col-form-label">Send message to particular age group:</label>
+
+        <input #ageGroup type="text" class="form-control" id="ageGroup" [(ngModel)]="inputAddGroup" name="ageGrp">
+
+      </div>
+      
+      <div class="form-group">
+        <input type="button" data-dismiss="modal" style="display:none" #dismissBtn />
+        <input value="SUBMIT" class=" btn btn-primary" type="submit" (click)="publishDetails($event, ageGroup.value, gender_type.value, messages_to_send.value);">
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+</form>
